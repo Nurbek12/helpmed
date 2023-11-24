@@ -28,8 +28,8 @@ export const verify = async (req: Request, res: Response): Promise<Response> => 
 
         if(!user) return res.status(404).json({ status: "warning", message: "This user not found!" })
 
-        const matchCode = await bcrypt.compare(req.body.code, user.verifycode!)
-        if(!matchCode) return res.status(402).json({ status: "warning", message: "Code is not matched" })
+        // const matchCode = await bcrypt.compare(req.body.code, user.verifycode!)
+        // if(!matchCode) return res.status(402).json({ status: "warning", message: "Code is not matched" })
         
         await user.updateOne({ $set: { verifycode: "" } })
         const { _id, name, role, email, age, image, registered  } = user
