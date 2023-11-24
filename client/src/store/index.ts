@@ -53,14 +53,14 @@ const mutations: MutationTree<State> & Mutations = {
     state.chats.splice(index, 1)
     state.chats.unshift(temp)
   },
-  [MutationTypes.EDIT_MESSAGE](state, message): void {
-    const index = state.chats.findIndex(c => c._id === message.chat)
-    const messageIndex = state.chats[index].messages?.findIndex(m => m._id === message._id)
+  [MutationTypes.EDIT_MESSAGE](_, __): void {
+    // const index = state.chats.findIndex(c => c._id === message.chat)
+    // const messageIndex = state.chats[index].messages?.findIndex(m => m._id === message._id)
     // Object.assign(state.chats[index].messages.[messageIndex], message)
 
     // if(state.chats[index]?.messages[0]_.id === message.id) state.chats[index].messages[0].text = message.text
   },
-  [MutationTypes.DELETE_MESSAGE](state, payload): void {
+  [MutationTypes.DELETE_MESSAGE](_: any, __): void {
     // const index = state.chats.findIndex(c => c.id === chat_id)
     // if(!state.chats[index]?.chatmessages) return
     // let lenght = state.chats[index].chatmessages.length - messages.length
@@ -85,7 +85,7 @@ const mutations: MutationTree<State> & Mutations = {
   },
 }
 
-export default new createStore({
+export default createStore({
   state,
   getters,
   mutations
