@@ -40,7 +40,7 @@
   <input type="file" id="fileInput" hidden @change="updateUser">
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 // import { useI18n } from 'vue-i18n'
@@ -50,8 +50,8 @@ import { rules } from '../utils/rules'
 const { getters, commit } = useStore()
 // const { t } = useI18n()
 
-const show = ref(false)
-const form = ref(null)
+// const show = ref(false)
+const form = ref<any>(null)
 const disabledBtn = computed(() => {
   if(
     getters.user?.name === user.value.name &&
@@ -64,9 +64,10 @@ const user = ref({
   ...getters.user,
 })
 
-const clickFileInput = () => document.getElementById('fileInput').click()
+// const clickFileInput = () => document.getElementById('fileInput').click()
 
-const updateUser = async (e) => {
+const updateUser = async (e: any) => {
+  console.log(e);
   const { valid } = await form.value.validate();
   if (valid) {
     const { data } = await edit_user({email: user.value.email, name: user.value.name})

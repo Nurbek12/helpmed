@@ -6,7 +6,7 @@
                 hide-details density="compact" variant="outlined"
                 append-inner-icon="mdi-magnify" bg-color="surface" />
         </v-card-text> -->
-        <v-list nav bg-color="transparent" mandatory class="pt-2" height="100%" lines="2">
+        <v-list nav bg-color="transparent" mandatory class="pt-2" height="100%" lines="two">
             <div class="d-flex w-100 justify-center" v-if="chats.length===0">
                 <v-chip label>Пусто</v-chip>
             </div>
@@ -31,7 +31,7 @@
     </v-card>
 </template>
 
-<script>
+<script lang="ts">
 import { mapGetters, mapMutations } from 'vuex'
 import { get_chats, open_chat } from '../api/chat'
 
@@ -46,17 +46,17 @@ export default {
     computed: mapGetters(['chats', 'current_chat', 'userid', 'role']),
     methods: {
         ...mapMutations(['SET_CHAT', 'SET_CHATS', 'OPEN_CHAT']),
-        async selectChat(id) {
+        async selectChat(id: any) {
             this.SET_CHAT(id)
         },
-        async openChat(chat, index) {
+        async openChat(chat: any, index: any) {
             // if(ch)
             await open_chat(chat._id)
             this.OPEN_CHAT(index)
         }
     },
     async created(){
-        const { data } = await get_chats(this.userid)
+        const { data } = await get_chats()
         this.SET_CHATS(data.result)
     },
 }

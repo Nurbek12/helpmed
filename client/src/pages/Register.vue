@@ -49,8 +49,8 @@ import { rules } from '../utils/rules'
 
 const router = useRouter()
 const { commit } = useStore()
-const form = ref(null)
-const tab = ref(0)
+const form = ref<any>(null)
+// const tab = ref(0)
 const sdata = ref({
     gender: null,
     age: null,
@@ -67,7 +67,7 @@ const send = async () => {
     if(valid) update({...sdata.value, role: "doctor", registered: true})
 }
 
-const update = async (formdata) => {
+const update = async (formdata: any) => {
     const { data } = await edit_user(formdata)
     commit('SET_USER', data.result)
     router.push('/')

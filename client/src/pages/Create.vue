@@ -66,12 +66,11 @@
 </template>
 
 <script setup lang="ts">
-import { Ref, ref } from 'vue'
+import { ref } from 'vue'
 import { IPosts } from '../interfaces'
 import { rules } from '../utils/rules'
 import { create_post } from '../api/post'
 import { useStore } from 'vuex'
-import { categories } from '../utils/categoires'
 
 const { getters } = useStore()
 const form = ref<any|null>(null)
@@ -84,7 +83,6 @@ const postData = ref<IPosts>({
     start_date: "",
     text: "",
 })
-const files = ref<File[]|null>(null)
 
 const items = [
     'Имеется ли у вас аллергия?',
@@ -94,7 +92,7 @@ const items = [
     'Есть ли проблемы с дыханием?',
 ]
 
-const fileinputclick = () => document.getElementById('file-input-23').click()
+// const fileinputclick = () => document.getElementById('file-input-23').click()
 
 const valid = async () => {
     const { valid } = await form.value.validate();

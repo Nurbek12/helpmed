@@ -53,11 +53,11 @@
 import { useStore } from 'vuex'
 
 const { getters, commit } = useStore()
-const languages = [
-  { lang: 'en', img: '/flags/us.svg', title: "English" },
-  { lang: 'ru', img: '/flags/ru.svg', title: "Русский" },
-  { lang: 'uz', img: '/flags/uz.svg', title: "O'zbekcha" },
-]
+// const languages = [
+//   { lang: 'en', img: '/flags/us.svg', title: "English" },
+//   { lang: 'ru', img: '/flags/ru.svg', title: "Русский" },
+//   { lang: 'uz', img: '/flags/uz.svg', title: "O'zbekcha" },
+// ]
 const links = [
   { url: '/', icon: 'mdi-home', title: 'Моя лента' },
   { url: '/chats', icon: 'mdi-message-text', title: 'Чаты' },

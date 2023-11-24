@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
         <v-col cols="12">
-            <v-list-item v-if="user?._id" border lines="3" class="pa-3 profile-list">
+            <v-list-item v-if="user?._id" border lines="three" class="pa-3 profile-list">
                 <template #prepend>
                     <v-avatar size="100" class="mr-3">
                         <v-img cover :src="user.image || '/noimg.jpg'" />

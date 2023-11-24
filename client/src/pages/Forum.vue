@@ -62,7 +62,7 @@
         <v-list class="comment-list">
           <v-list-group class="mb-1" v-for="comment, i in post.comments" :key="i">
             <template v-slot:activator="{ props, isOpen }">
-              <v-list-item border class="py-3" append-icon :ripple="false">
+              <v-list-item border class="py-3" append-icon="" :ripple="false">
                 <template #prepend>
                   <v-btn :to="`/profile/${comment?.sender?._id}`" :disabled="comment?.sender?.role !== 'doctor'" variant="text" color="white" rounded="circle" size="45" class="mr-2">
                     <v-avatar color="primary" size="45">
@@ -129,14 +129,14 @@ const { getters } = useStore()
 const { params } = useRoute()
 const post = ref<IPosts|any>({})
 
-const parent = ref(null)
+const parent = ref<any>(null)
 const sorting = ref('newest')
 
-const sorters = [
-  { title: "Популярные", value: 'favourite' },
-  { title: "Новые", value: 'newest' },
-  { title: "Старые", value: 'oldest' },
-]
+// const sorters = [
+//   { title: "Популярные", value: 'favourite' },
+//   { title: "Новые", value: 'newest' },
+//   { title: "Старые", value: 'oldest' },
+// ]
 
 const init = async () => {
   const { data } = await get_post_by_id(params.id as string, sorting.value)

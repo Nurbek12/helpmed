@@ -28,7 +28,7 @@
             </div> -->
             <span class="text-caption mt-2 mt-sm-0 text-gray d-flex align-center">
               <!-- Feb 4, 2014 at 20:56 -->
-              {{ new Date(post.createdAt).toLocaleString(undefined, { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', }) }}
+              {{ new Date(post.createdAt as any).toLocaleString(undefined, { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', }) }}
               <v-icon class="ml-1" size="x-small">mdi-clock-outline</v-icon>
             </span>
           </v-card-text>

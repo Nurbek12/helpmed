@@ -15,12 +15,12 @@
   </v-container>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import ChatList from '../components/ChatList.vue'
 import MessageContainer from '../components/MessageContainer.vue'
 import { useStore } from 'vuex'
-import { MutationTypes } from '../interfaces/store-types'
+// import { MutationTypes } from '../interfaces/store-types'
 // import { useI18n } from 'vue-i18n'
 import { joinchat, getmessage } from '../api/socket'
 
@@ -28,7 +28,7 @@ import { joinchat, getmessage } from '../api/socket'
 const { getters, commit } = useStore()
 const isSmallScreen = ref(false)
 
-getmessage((message) => commit('ADD_MESSAGE', message))
+getmessage((message: any) => commit('ADD_MESSAGE', message))
 // getchat((chat) => commit('addChat', chat))
 // removeinchat((id) => commit('removeChat', id))
 // deleteinmessage(data => commit('deleteMessage', data))

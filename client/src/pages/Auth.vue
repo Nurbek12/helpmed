@@ -9,9 +9,9 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, useAttrs } from 'vue'
+// import { onMounted, useAttrs } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useDefaults } from 'vuetify/lib/framework.mjs'
+// import { useDefaults } from 'vuetify/lib/framework.mjs'
 import { useStore } from 'vuex'
 import { checkToken } from '../api/index'
 
