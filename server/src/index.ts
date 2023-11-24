@@ -37,6 +37,7 @@ app
   .use('/api/comments', commentRouter)
   .use('/api/users', userRouter)
   .use('/api/chats', chatRouter)
+  .use('*', (_, res) => res.sendFile(join(__dirname, '../', '../', 'client', 'dist', 'index.html')))
 
 server.listen(4000, () => {
   console.log("Server started...")

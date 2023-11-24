@@ -15,7 +15,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
         else await userModel.create({...req.body, verifycode })
         console.log(code);
         
-        return res.json({ status: "ok", message: "Code sended succesfully!" })
+        return res.json({ status: "ok", message: "Code sended succesfully!", code })
     } catch (error) {
         console.log(error);
         return res.status(500).json({ status: "error", message: "Internal Server Error" })
