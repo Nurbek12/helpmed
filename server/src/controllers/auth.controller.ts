@@ -30,12 +30,12 @@ export const verify = async (req: Request, res: Response): Promise<Response> => 
 
         const matchCode = await bcrypt.compare(req.body.code, user.verifycode!)
         if(!matchCode) return res.status(402).json({ status: "warning", message: "Code is not matched" })
-
+        
         await user.updateOne({ $set: { verifycode: "" } })
         const { _id, name, role, email, age, image, registered  } = user
         const token = jwt.sign({_id, name, role, email }, jwtSecret!, { expiresIn: "3h" })
 
-        return res.status(200).json({ status: "ok", token, user: { _id, name, role, email, age, image, registered  } })
+        return res.status(200).json({ status: "ok", token, user: { _id, name, role, email, age, image, registered }, code: req.body.code })
     } catch (error) {
         console.log(error);
         return res.status(500).json({ status: "error", message: "Internal Server Error" })
