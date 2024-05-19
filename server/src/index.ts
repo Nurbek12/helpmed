@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import { createServer } from 'http'
-import passp from './config/passport'
+// import passp from './config/passport'
 import { db } from './config/database'
 import { join } from 'path'
 import { Server } from 'socket.io'
@@ -18,11 +18,11 @@ const server = createServer(app)
 const io = new Server(server, {
   cors: {
     credentials: true,
-    origin: 'http://localhost:5173'
+    origin: '*'
   }
 })
 
-passp(app)
+// passp(app)
 socket(io)
 
 app
