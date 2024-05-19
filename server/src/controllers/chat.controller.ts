@@ -114,7 +114,7 @@ export const getChat = async (req: Request, res: Response): Promise<Response> =>
 
 export const openChat = async (req: Request, res: Response): Promise<Response> => {
     try {
-        if(req.user?.role === "patient") return res.status(402).json({ status: "warning", message: "You can't make this request!" })
+        // if(req.user?.role === "patient") return res.status(402).json({ status: "warning", message: "You can't make this request!" })
 
         await chatModel.findByIdAndUpdate(req.params.id, { $set: { open: true } })
         return res.status(200).json({ status: "ok", result: true })

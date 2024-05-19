@@ -1,7 +1,7 @@
 <template>
   <v-app-bar flat color="transition" border class="px-md-10 px-0">
     <v-app-bar-title>
-        <v-img width="100" class="mt-0" src="/logo-master-03.svg"></v-img>
+        <v-img width="100" class="mt-0" src="/logo.jpg"></v-img>
     </v-app-bar-title>
     <template v-if="getters.logged && getters.user.registered === true">
       <div class="mr-4 d-flex flex-column text-right pt-1">
