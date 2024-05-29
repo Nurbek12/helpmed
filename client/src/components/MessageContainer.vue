@@ -57,8 +57,8 @@
   <ChatForm v-show="getters.current_chat?.open" @addMessage="addMessage" @updateMessage="updateMessage" @edit-off="editOff" :isEdited="!!editedMessage" :text="editedMessage?.text"/>
 </template>
 
-<script setup>
-import { ref, onMounted, nextTick } from 'vue'
+<script setup lang="ts">
+import { ref, nextTick } from 'vue'
 import ChatForm from './ChatForm.vue'
 import { useStore } from 'vuex'
 import * as chatApi from '../api/chat'
@@ -66,18 +66,18 @@ import * as chatSocket from '../api/socket'
 
 const { getters, commit } = useStore()
 
-const chatbox = ref(null)
-const showDelete = ref(false)
-const selectedDeleteId = ref([])
-const editedMessage = ref(null)
+// const chatbox = ref(null)
+const showDelete = ref<any>(false)
+const selectedDeleteId = ref<any[]>([])
+const editedMessage = ref<any>(null)
 
-const addMessage = async messageData => {
+const addMessage = async (messageData: any) => {
   // if(typeof messageData === "string") {
     const { data } = await chatApi.create_message({
       chat: getters.current_chat._id,
       sender: getters.userid,
       text: messageData,
-    })
+    } as any)
     chatSocket.sendmessage(data.result)
   // }else{
   //   messageData.append("sender_id", getters.userid)
@@ -88,11 +88,11 @@ const addMessage = async messageData => {
   setTimeout(scrollToBottomChat, 200) 
 }
 
-const updateMessage = async text => {
+const updateMessage = async (text: any) => {
   if(!editedMessage.value?.id) return
   if(editedMessage.value.text !== text) {
-    const { data } = await chatApi.edit_message(editedMessage.value.id, { text })
-    chatSocket.editmessage(data.result)
+    // const { data } = await chatApi.edit_message(editedMessage.value.id, { text })
+    // chatSocket.editmessage(data.result)
   }
   editOff()
 }
@@ -122,7 +122,7 @@ const editOff = () => {
 
 const scrollToBottomChat = () => {
   nextTick(() => {
-    document.getElementById('chatbox').scrollTop = document.getElementById('chatbox').scrollHeight
+    // document.getElementById('chatbox').scrollTop = document.getElementById('chatbox').scrollHeight
   })
 }
 </script>

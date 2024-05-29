@@ -15,7 +15,7 @@
   </v-container>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import ChatList from '../components/ChatList.vue'
 import MessageContainer from '../components/MessageContainer.vue'
